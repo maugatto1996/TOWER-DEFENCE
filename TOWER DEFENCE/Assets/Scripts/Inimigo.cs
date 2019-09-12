@@ -5,13 +5,22 @@ using UnityEngine.AI;
 
 public class Inimigo : MonoBehaviour
 {
-    // Start is called before the first frame update
+    [SerializeField] private int vida;
     void Start()
     {
         NavMeshAgent agente = GetComponent<NavMeshAgent>();
         GameObject FimDoCaminho = GameObject.Find("FimDoCaminho");
         Vector3 posicaoFimDoCaminho = FimDoCaminho.transform.position;
         agente.SetDestination(posicaoFimDoCaminho);
+    }
+
+    public void RecebeDano(int pontosDeDano)
+    {
+        vida -= pontosDeDano;
+        if(vida <= 0)
+        {
+            Destroy(this.gameObject);
+        }
     }
 
     // Update is called once per frame
