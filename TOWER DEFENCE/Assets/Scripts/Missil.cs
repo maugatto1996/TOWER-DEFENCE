@@ -6,13 +6,19 @@ public class Missil : MonoBehaviour
 {
 
     private float velocidade = 10f;
-    private GameObject alvo;
+    private Inimigo alvo;
     [SerializeField] private int pontosDeDano;
+    
 
     void Start()
     {
-        alvo = GameObject.Find("Inimigo");
+        
         AutoDestruirDepoisDeSegundo(4);
+    }
+
+    public void DefineAlvo(Inimigo inimigo)
+    {
+        alvo = inimigo;
     }
 
 
