@@ -5,14 +5,30 @@ using UnityEngine;
 public class Jogo : MonoBehaviour
 {
     [SerializeField] private GameObject torrePrefab;
+    [SerializeField] private GameObject gameOver;
+    [SerializeField] private Jogador jogador;
+
+
+    void Start(){
+        gameOver.SetActive(false);
+    }
 
 
     void Update()
     {
+
+        if(JogoAcabou()){
+            gameOver.SetActive(true);
+        }else{
+
         if (ClicouComBotaoPrimario())
         {
             ConstruirTorre();
-        }   
+        }   }
+    }
+
+    private bool JogoAcabou(){
+        return !jogador.EstaVivo();
     }
 
     private bool ClicouComBotaoPrimario()
