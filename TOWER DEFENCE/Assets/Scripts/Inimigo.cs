@@ -6,8 +6,12 @@ using UnityEngine.AI;
 public class Inimigo : MonoBehaviour
 {
     [SerializeField] private int vida;
+    public Jogador jogador;
     void Start()
     {
+        jogador = GameObject.FindObjectOfType(typeof(Jogador)) as Jogador;
+
+
         NavMeshAgent agente = GetComponent<NavMeshAgent>();
         GameObject FimDoCaminho = GameObject.Find("FimDoCaminho");
         Vector3 posicaoFimDoCaminho = FimDoCaminho.transform.position;
@@ -20,6 +24,8 @@ public class Inimigo : MonoBehaviour
         if(vida <= 0)
         {
             Destroy(this.gameObject);
+
+            jogador.AumentaBonus();
         }
     }
 

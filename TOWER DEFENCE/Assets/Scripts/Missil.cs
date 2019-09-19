@@ -49,6 +49,7 @@ public class Missil : MonoBehaviour
         if (elementoColidido.CompareTag("Inimigo"))
         {
             Destroy(this.gameObject);
+            
             //Destroy(elementoColidido.gameObject);
             Inimigo inimigo = elementoColidido.GetComponent<Inimigo>();
             inimigo.RecebeDano(pontosDeDano);
